@@ -1,18 +1,18 @@
-version: '3.8'
-
 services:
   backend:
     build: ./backend
     ports:
       - "4000:4000"
     volumes:
-      - ./backend/src:/app/src # Sincroniza tu código local
+      - ./backend/src:/app/src
+    env_file:
+      - ./backend/.env
 
   frontend:
     build: ./frontend
     ports:
-      - "8080:80" # Accedes por localhost:8080
+      - "8080:80"
     volumes:
-      - ./frontend/src:/app/src # Sincroniza tu código local
+      - ./frontend/src:/app/src
     depends_on:
       - backend
